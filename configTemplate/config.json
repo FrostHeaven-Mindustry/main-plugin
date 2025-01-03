@@ -1,9 +1,9 @@
 {
     "token": "bot token",
-    "logchannelid": "channel where messages will be logged",
-    "banlogchannelid": "channel where bans will be logged",
-    "mongodburl": "Mongo Database URL connection",
-    "discordurl": "Discord invite code",
-    "moderatorid": "Role ID of moderator",
-    "adminid": "Role ID of admin"
+    "logchannelid": "1286221603155480597",
+    "banlogchannelid": "1324559740591931473",
+    "mongodburl": "mongodb://202.181.188.117:27017/NazrinPlugin",
+    "discordurl": "https://discord.gg/pgVxWzygzW",
+    "moderatorid": "1299701224299429948, 1297945066446524508",
+    "adminid": "1265638410694164578, 1265638410694164576"
 }

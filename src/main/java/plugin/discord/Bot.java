@@ -52,7 +52,7 @@ import static plugin.utils.FindDocument.getPlayerDataAnyway;
 import static plugin.utils.MenuHandler.loginMenu;
 import static plugin.utils.MenuHandler.loginMenuFunction;
 import static plugin.utils.Utilities.findPlayerByName;
-import static plugin.utils.Checks.*;
+import static plugin.utils.Checks.isAdmin;
 
 @SuppressWarnings("unused")
 public class Bot {

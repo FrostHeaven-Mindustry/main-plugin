@@ -217,7 +217,7 @@ public class Bot {
                     listener.getChannel().sendMessage(response);
                     return;
                 }
-                Player plr = Groups.player.find(p => p.uuid().equals(data.uuid));
+                Player plr = Groups.player.find(p -> p.uuid().equals(data.uuid));
                 if (plr.isAdmin()) {
                     Log.info("Player is admin, he can't be banned");
                 }

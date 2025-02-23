@@ -219,7 +219,7 @@ public class Bot {
                 }
                 Player plr = Groups.player.find(p -> p.uuid().equals(data.uuid));
                 if (plr.isAdmin()) {
-                    Log.info("Player is admin, he can't be banned")
+                    Log.info("Player is admin, he can't be banned");
                 }
                 if (plr == null) {
                     Log.info("Player is offline, not kicking him");

@@ -52,6 +52,7 @@ import static plugin.utils.FindDocument.getPlayerDataAnyway;
 import static plugin.utils.MenuHandler.loginMenu;
 import static plugin.utils.MenuHandler.loginMenuFunction;
 import static plugin.utils.Utilities.findPlayerByName;
+import static plugin.utils.Checks.*;
 
 @SuppressWarnings("unused")
 public class Bot {
@@ -135,9 +136,9 @@ public class Bot {
                 String response = "```" +
                         "Player -> Basic rank that given to all players on our server\n" +
                         "Verified -> In order to get it you should connect your mindustry account to discord using /login\n" +
-                        "Administrator -> Administrator of our servers.\n" +
-                        "Console -> People that have access to game console and javascript execution\n" +
-                        "Owner -> Rank of owner, has access to everything" +
+                        "Moderator -> Administrator of our servers.\n" +
+                        "JS (JavaScript) -> People that have access to game console and javascript execution\n" +
+                        "Administrator -> Rank of head admins, has access to everything" +
                         "```";
                 listener.getChannel().sendMessage(response);
             }
@@ -217,6 +218,9 @@ public class Bot {
                     return;
                 }
                 Player plr = Groups.player.find(p -> p.uuid().equals(data.uuid));
+                if (plr.isAdmin()) {
+                    Log.info("Player is admin, he can't be banned")
+                }
                 if (plr == null) {
                     Log.info("Player is offline, not kicking him");
                 } else {

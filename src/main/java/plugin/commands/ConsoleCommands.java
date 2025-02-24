@@ -47,10 +47,9 @@ public class ConsoleCommands {
             MongoDbUpdate(data);
             Log.info("Rank has been given!");
             Player player = Groups.player.find(p -> p.uuid().equals(data.uuid));
-            if (player == null){
+            if (player == null) {
                 return;
             }
-            MongoDbPlayerRankCheck(data.uuid);
         });
         handler.register("setvip", "<id> <true/false>", "Sets vip to player", (args, params) -> {
             PlayerData data = getPlayerDataAnyway(args[0]);
@@ -68,10 +67,9 @@ public class ConsoleCommands {
             MongoDbUpdate(data);
             Log.info(data.isVip == true ? "Given Vip." : "Removed Vip.");
             Player player = Groups.player.find(p -> p.uuid().equals(data.uuid));
-            if (player == null){
+            if (player == null) {
                 return;
             }
-            MongoDbPlayerRankCheck(data.uuid);
         });
         handler.register("check", "Checks mongodb", (args, params) -> {
             MongoDbCheck();
@@ -115,8 +113,7 @@ public class ConsoleCommands {
                     String activeAch = "[lime]Hyper[green]active";
                     if (!csr.achievements.contains(activeAch)) {
                         csr.achievements.add(activeAch);
-                        MongoDbUpdate(csr);
-                        MongoDbPlayerRankCheck(findPlayerByID(csr.id).uuid());
+                        MongoDbUpdate(csr)
                     }
                 }
             }
@@ -127,7 +124,6 @@ public class ConsoleCommands {
                     if (!csr.achievements.contains(activeAch)) {
                         csr.achievements.add(activeAch);
                         MongoDbUpdate(csr);
-                        MongoDbPlayerRankCheck(findPlayerByID(csr.id).uuid());
                     }
                 }
             }

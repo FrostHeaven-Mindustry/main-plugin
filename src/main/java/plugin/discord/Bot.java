@@ -135,9 +135,9 @@ public class Bot {
                 String response = "```" +
                         "Player -> Basic rank that given to all players on our server\n" +
                         "Verified -> In order to get it you should connect your mindustry account to discord using /login\n" +
-                        "Administrator -> Administrator of our servers.\n" +
-                        "Console -> People that have access to game console and javascript execution\n" +
-                        "Owner -> Rank of owner, has access to everything" +
+                        "Moderator -> Administrator of our servers.\n" +
+                        "JS (JavaScript) -> People that have access to game console and javascript execution\n" +
+                        "Administrator -> Rank of head admins, has access to everything" +
                         "```";
                 listener.getChannel().sendMessage(response);
             }
@@ -217,6 +217,9 @@ public class Bot {
                     return;
                 }
                 Player plr = Groups.player.find(p -> p.uuid().equals(data.uuid));
+                if (plr.admin) {
+                    Log.info("You can`t ban admins!");
+                }    
                 if (plr == null) {
                     Log.info("Player is offline, not kicking him");
                 } else {

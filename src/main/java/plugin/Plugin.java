@@ -161,6 +161,15 @@ public class Plugin extends mindustry.mod.Plugin implements ApplicationListener 
             Call.sendMessage(player.name() + "[white] left " + "[grey][" + data.getId() + "]");
             Log.info(player.plainName() + " left " + "[" + data.getId() + "]");
         });
+        Vars.netServer.addPacketHandler("MySubtitle", (target, args) -> {
+            target.kick("[scarlet]Схемшиз это читы, отключай его!");
+        });
+        Vars.netServer.addPacketHandler("fooCheck", (target, args) -> {
+            target.kick("[scarlet]Фус это читы, удаляй его!");
+        });
+        Vars.netServer.addPacketHandler("fooTransmission", (target, args) -> {
+            target.kick("[scarlet]Удаляй фус!");
+        });
     }
 
     @Override

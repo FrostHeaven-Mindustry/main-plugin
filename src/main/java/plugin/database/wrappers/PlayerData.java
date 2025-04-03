@@ -38,7 +38,7 @@ public class PlayerData {
     }
 
     public static long getIdBySnowFlake(long snowflake) {
-    PlayerData data = new PlayerData(players.find(eq("discordId", snowflake).first()));
+    PlayerData data = new PlayerData(players.find(eq("discordId", snowflake)).first());
     if (data != null) {
         return data.id; 
     }

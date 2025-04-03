@@ -39,16 +39,3 @@ jobs:
       with:
           name: ${{ github.event.repository.name }}
           path: build/libs/
-
-    - name: Create Release on GitHub
-      id: create_release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: "v${{ github.run_number }}"
-        name: "${{ github.event.repository.name }}"
-        body: "Automated release of version v${{ github.run_number }}."
-        draft: false
-        prerelease: false
-        files: build/libs/*.jar
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -5,14 +5,13 @@ import org.javacord.api.entity.permission.Role;
 import plugin.database.wrappers.PlayerData;
 import plugin.Utilities;
 import useful.Bundle;
-
 import java.awt.*;
 import java.time.Duration;
 import java.util.Optional;
 
 public class    Embed {
 
-    public static EmbedBuilder banEmbed(PlayerData data, String reason, long banTime, String moderator){
+    public static EmbedBuilder banEmbed(PlayerData data, PlayerData dataModer, String reason, long banTime, String moderator){
         return new EmbedBuilder()
             .setTitle("Ban event")
             .setColor(Color.RED)
@@ -22,9 +21,23 @@ public class    Embed {
             .addField("**IP**", data.getIPs().toString())
             .addField("**Reason**", reason)
             .addField("**Expires**", "<t:" + banTime/1000 +":D>")
-            .addField("**Moderator**", moderator);
+            .addField("**Moderator**", moderator)
+            .addField("**Moderator Id**", String.valueOf(dataModer.getId()));
             
 }
+    public static EmbedBuilder discordBanEmbed(PlayerData data, long discordID, String reason, long banTime, String moderator){
+        return new EmbedBuilder()
+            .setTitle("Ban event")
+            .setColor(Color.RED)
+            .addField("**ID**", String.valueOf(data.getId()))
+            .addField("**Name**", data.getNames().get(data.getNames().size() - 1))
+            .addField("**UUID**", data.getUuid())
+            .addField("**IP**", data.getIPs().toString())
+            .addField("**Reason**", reason)
+            .addField("**Expires**", "<t:" + banTime/1000 +":D>")
+            .addField("**Moderator**", moderator)
+            .addField("**Moderator Id**", String.valueOf(PlayerData.getIdBySnowFlake(discordID)));
+ }
     public static EmbedBuilder noRoleEmbed(Optional<Role> role){
         return new EmbedBuilder()
                 .setTitle("Not enough permissions!")

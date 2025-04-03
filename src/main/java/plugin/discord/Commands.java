@@ -31,7 +31,7 @@ import static arc.util.Strings.stripColors;
 import static mindustry.Vars.netServer;
 import static plugin.configs.ConfigJson.discordUrl;
 import static plugin.discord.Bot.api;
-import static plugin.discord.Embed.banEmbed;
+import static plugin.discord.Embed.discordBanEmbed;
 import static plugin.models.Ranks.getRank;
 import static plugin.funcs.Other.*;
 import static plugin.menus.MenuHandler.loginMenu;
@@ -136,7 +136,7 @@ public class Commands {
                     message.getChannel().sendMessage("Banned: " + data.getLastName());
                     Call.sendMessage(data.getLastName() + " has been banned for: " + args[2]);
                     data.setLastBanTime(banTime);
-                    Bot.banchannel.sendMessage(banEmbed(data, args[2], banTime, message.getAuthor().getName()));
+                    Bot.banchannel.sendMessage(discordBanEmbed(data, message.getAuthor().getId(), args[2], banTime, message.getAuthor().getName()));
                 });
         DiscordCommandRegister.create("infoip")
                 .addRole(ConfigJson.moderatorId)

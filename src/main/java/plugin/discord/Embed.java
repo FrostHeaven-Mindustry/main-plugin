@@ -22,7 +22,7 @@ public class    Embed {
             .addField("**IP**", data.getIPs().toString())
             .addField("**Reason**", reason)
             .addField("**Expires**", "<t:" + banTime/1000 +":D>")
-            .addField("**Moderator**", moderator);
+            .addField("**Moderator**", moderator)
             .addField("**Moderator Id**", String.valueOf(dataModer.getId()))
             
 }

@@ -26,6 +26,19 @@ public class    Embed {
             .addField("**Moderator Id**", String.valueOf(dataModer.getId()));
             
 }
+    public static EmbedBuilder discordBanEmbed(PlayerData data, String reason, long banTime, String moderator){
+        return new EmbedBuilder()
+            .setTitle("Ban event")
+            .setColor(Color.RED)
+            .addField("**ID**", String.valueOf(data.getId()))
+            .addField("**Name**", data.getNames().get(data.getNames().size() - 1))
+            .addField("**UUID**", data.getUuid())
+            .addField("**IP**", data.getIPs().toString())
+            .addField("**Reason**", reason)
+            .addField("**Expires**", "<t:" + banTime/1000 +":D>")
+            .addField("**Moderator**", moderator)
+            .addField("**Moderator Id**", "Ban from duscord");
+ }
     public static EmbedBuilder noRoleEmbed(Optional<Role> role){
         return new EmbedBuilder()
                 .setTitle("Not enough permissions!")

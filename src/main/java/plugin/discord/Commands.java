@@ -31,7 +31,6 @@ import static arc.util.Strings.stripColors;
 import static mindustry.Vars.netServer;
 import static plugin.configs.ConfigJson.discordUrl;
 import static plugin.discord.Bot.api;
-import static plugin.discord.Embed.banEmbed;
 import static plugin.discord.Embed.discordBanEmbed;
 import static plugin.models.Ranks.getRank;
 import static plugin.funcs.Other.*;

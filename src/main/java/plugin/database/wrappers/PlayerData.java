@@ -37,6 +37,14 @@ public class PlayerData {
         return output;
     }
 
+    public static long getIdBySnowFlake(long snowflake) {
+    PlayerData data = players.find(eq("discordId", snowflake).first();
+    if (data != null) {
+        return data.id; 
+    }
+    return snowflake;
+    }
+
     public PlayerData(plugin.database.collections.PlayerData collection){
         this.collection = collection;
     }

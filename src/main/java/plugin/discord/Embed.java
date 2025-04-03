@@ -26,7 +26,7 @@ public class    Embed {
             .addField("**Moderator Id**", String.valueOf(dataModer.getId()));
             
 }
-    public static EmbedBuilder discordBanEmbed(PlayerData data, long discordID, String reason, long banTime, String moderator){
+    public static EmbedBuilder discordBanEmbed(PlayerData data, String discordID, String reason, long banTime, String moderator){
         return new EmbedBuilder()
             .setTitle("Ban event")
             .setColor(Color.RED)

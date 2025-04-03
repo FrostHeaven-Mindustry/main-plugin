@@ -2,7 +2,7 @@ package plugin.discord;
 
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.permission.Role;
-import plugin.database.wrappers.PlayerData.;
+import plugin.database.wrappers.PlayerData;
 import plugin.Utilities;
 import useful.Bundle;
 import java.awt.*;

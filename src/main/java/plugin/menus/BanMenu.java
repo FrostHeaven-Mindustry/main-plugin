@@ -110,16 +110,17 @@ public class BanMenu {
 
             input.closed(Action.back());
             input.result((view, text) -> {
-                var target = view.state.get(TARGET);
+                var target = view.state.get(TARGET); 
                 long duration = view.state.get(DURATION);
                 PlayerData data = new PlayerData(target.uuid());
+                PlayerData dataModer = new PlayerData(view.player.uuid());
                 Date date = new Date();
                 long banTime = date.getTime() + TimeUnit.DAYS.toMillis(duration);
                 String timeUntilUnban = Bundle.formatDuration(Duration.ofDays(duration));
-                target.con.kick("[red]You have been banned!\n\n" + "[white]Reason: " + text + "\nDuration: " + timeUntilUnban + " until unban\nIf you think this is a mistake, make sure to appeal ban in our discord: " + discordUrl, 0);
+                target.con.kick("[red]You have been banned!\n\n" + "[white]Reason: " + text + "\nDuration: " + timeUntilUnban + " until unban\nYour ID: " + data.getId() + "\n\nIf you think this is a mistake, make sure to appeal ban in our discord: " + discordUrl, 0);
                 Call.sendMessage(target.plainName() + " has been banned for: " + text);
                 data.setLastBanTime(banTime);
-                Bot.banchannel.sendMessage(banEmbed(data, text, banTime, view.player.plainName()));
+                Bot.banchannel.sendMessage(banEmbed(data, dataModer, text, banTime, view.player.plainName()));
             });
         });
     }

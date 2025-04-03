@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class    Embed {
 
-    public static EmbedBuilder banEmbed(PlayerData data, String reason, long banTime, String moderator){
+    public static EmbedBuilder banEmbed(PlayerData data, PlayerData dataModer, String reason, long banTime, String moderator){
         return new EmbedBuilder()
             .setTitle("Ban event")
             .setColor(Color.RED)
@@ -23,6 +23,7 @@ public class    Embed {
             .addField("**Reason**", reason)
             .addField("**Expires**", "<t:" + banTime/1000 +":D>")
             .addField("**Moderator**", moderator);
+        .   .addField("**Moderator Id**", String.valueOf(dataModer.getId()))
             
 }
     public static EmbedBuilder noRoleEmbed(Optional<Role> role){

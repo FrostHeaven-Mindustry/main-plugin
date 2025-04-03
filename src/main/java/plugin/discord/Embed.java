@@ -36,7 +36,7 @@ public class    Embed {
             .addField("**Reason**", reason)
             .addField("**Expires**", "<t:" + banTime/1000 +":D>")
             .addField("**Moderator**", moderator)
-            .addField("**Moderator Id**", PlayerData.getIdBySnowFlake(discordID));
+            .addField("**Moderator Id**", String.valueOf(PlayerData.getIdBySnowFlake(discordID)));
  }
     public static EmbedBuilder noRoleEmbed(Optional<Role> role){
         return new EmbedBuilder()

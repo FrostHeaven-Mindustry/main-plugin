@@ -23,7 +23,7 @@ public class    Embed {
             .addField("**Reason**", reason)
             .addField("**Expires**", "<t:" + banTime/1000 +":D>")
             .addField("**Moderator**", moderator)
-            .addField("**Moderator Id**", String.valueOf(dataModer.getId()))
+            .addField("**Moderator Id**", String.valueOf(dataModer.getId()));
             
 }
     public static EmbedBuilder noRoleEmbed(Optional<Role> role){

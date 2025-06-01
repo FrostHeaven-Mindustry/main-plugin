@@ -41,26 +41,20 @@ public class Bot {
             if (event.message.startsWith("/")) {
                 return;
             }
-            channel.sendMessage(event.player.plainName() + ": `" + event.message.replace("`", "") + "`");
+            channel.sendMessage(event.player.plainName().replace("`", "") + ": `" + event.message.replace("`", "") + "`");
         });
 
         Events.on(EventType.PlayerJoin.class, event -> Timer.schedule(() -> {
             PlayerData data = new PlayerData(event.player);
-            if (event.player.plainName().startsWith("@")) {
-                return;
-            }
             if (data.isExist()) {
-                channel.sendMessage("`" + event.player.plainName() + " (" + data.getId() + ")" + " joined the server!" + "`");
+                channel.sendMessage("`" + event.player.plainName().replace("`", "") + " (" + data.getId() + ")" + " joined the server!" + "`");
             }
         }, 0.2f));
 
         Events.on(EventType.PlayerLeave.class, event -> Timer.schedule(() -> {
             PlayerData data = new PlayerData(event.player);
-            if (event.player.plainName().startsWith("@")) {
-                return;
-            }
             if (data.isExist()) {
-                channel.sendMessage("`" + event.player.plainName() + " (" + data.getId() + ")" + " left the server!" + "`");
+                channel.sendMessage("`" + event.player.plainName().replace("`", "") + " (" + data.getId() + ")" + " left the server!" + "`");
             }
         }, 0.2f));
     }

@@ -7,6 +7,8 @@ import mindustry.core.NetServer;
 import mindustry.gen.Call;
 import mindustry.gen.Player;
 import mindustry.net.Packets;
+import plugin.database.wrappers.PlayerData;
+import plugin.database.collections.PlayerData;
 
 public class VoteSession {
     private static VoteSession instance;
@@ -66,8 +68,11 @@ public class VoteSession {
                 return;
             }
         }
+
+        plugin.database.wrappers.PlayerData data = new plugin.database.wrappers.PlayerData(player);
+
         Call.sendMessage(Strings.format("[lightgray]@\f[lightgray] has voted @ kicking[orange] @\f[lightgray].[accent] (@/@)\n[lightgray]Type[orange] /vote <y/n>[] to agree.",
-                player.coloredName(), h, target.coloredName(), currentVotes, requiredVotes));
+                player.coloredName()+" [grey]["+data.getId()+"][white]", h, target.coloredName(), currentVotes, requiredVotes));
         checkPassed();
     }
 

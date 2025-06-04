@@ -19,6 +19,11 @@ import rhino.Scriptable;
 import rhino.Undefined;
 import java.util.ArrayList;
 import java.util.Set;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.JSONObject;
 
 import static plugin.commands.ChatCommands.votedPlayer;
 import static plugin.commands.ChatCommands.votes;
@@ -34,6 +39,41 @@ public class Utilities {
         votes.set(0);
         votedPlayer.clear();
     }
+
+    public static boolean checkProxy(String insertedText) {
+    try {
+        String urlString = "http://ip-api.com/json/" + insertedText + "?fields=proxy,hosting";
+        URL url = new URL(urlString);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+
+        int responseCode = con.getResponseCode();
+
+        if (responseCode == HttpURLConnection.HTTP_OK) { // 200
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            JSONObject jsonResponse = new JSONObject(response.toString());
+            boolean proxy = jsonResponse.getBoolean("proxy");
+            boolean hosting = jsonResponse.getBoolean("hosting");
+
+            return (proxy || hosting);
+        } else {
+            return false;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false; // <-- Add this return
+    }
+    }
+    
     public static void voteSuccess(Map map){
         Call.sendMessage("[green]Vote success! Changing map!");
         Vars.maps.setNextMapOverride(map);
